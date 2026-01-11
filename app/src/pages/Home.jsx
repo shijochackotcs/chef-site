@@ -9,7 +9,8 @@ const featuredSeeds = [
     name: "Signature Pasta",
     description: "Handmade pasta in creamy sauce",
     price: 14.5,
-    image: "/uploads/images/signature-pasta.jpg",
+    image:
+      "https://images.unsplash.com/photo-1604908177078-6a15f54a1f3c?ixlib=rb-4.0.3&q=80&w=1080&auto=format&fit=crop",
   },
   {
     name: "Grilled Salmon",
@@ -91,8 +92,8 @@ export default function Home() {
         <section
           className="hero"
           style={{
-            backgroundImage:
-              "linear-gradient(120deg, rgba(17,24,39,0.65), rgba(11,18,34,0.65) 60%, rgba(31,41,55,0.65)), url(/uploads/images/yummy.webp), url(/uploads/images/OIP.jpg), url(/uploads/images/hero.webp), url(https://cdn.pixabay.com/photo/2017/01/18/19/39/restaurant-1999850_1280.jpg)",
+              backgroundImage:
+                "linear-gradient(120deg, rgba(17,24,39,0.65), rgba(11,18,34,0.65) 60%, rgba(31,41,55,0.65)), url(https://cdn.pixabay.com/photo/2016/06/07/17/26/food-1447929_1280.jpg), url(/uploads/images/yummy.webp), url(/uploads/images/OIP.jpg), url(/uploads/images/hero.webp), url(https://cdn.pixabay.com/photo/2017/01/18/19/39/restaurant-1999850_1280.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center",
             minHeight: "calc(100vh - var(--nav-h) - var(--footer-h))",
@@ -154,6 +155,10 @@ export default function Home() {
                       borderRadius: "50%",
                       objectFit: "cover",
                       border: "1px solid rgba(255,255,255,0.25)",
+                    }}
+                    onError={(e) => {
+                      e.currentTarget.src =
+                        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&q=80&w=300&auto=format&fit=crop";
                     }}
                   />
                   <Typography variant="body2" sx={{ color: "text.secondary" }}>
