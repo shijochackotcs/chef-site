@@ -8,7 +8,7 @@ export default function Navbar() {
     <nav className="nav">
       <div className="nav-inner">
         <Link to="/" className="logo">
-          ChefSite
+          chefjocateringevents
         </Link>
         <button
           className="nav-toggle"

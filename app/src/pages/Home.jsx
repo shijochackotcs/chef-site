@@ -73,7 +73,7 @@ export default function Home() {
     <>
       <section className="hero">
         <div className="hero-inner">
-          <h1>Welcome to ChefSite</h1>
+          <h1>Welcome to chefjocateringevents</h1>
           <p>Discover curated dishes and fine flavors.</p>
           <a className="btn" href="/dishes">
             Explore Dishes

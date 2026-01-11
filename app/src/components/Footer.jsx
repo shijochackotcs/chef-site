@@ -12,7 +12,7 @@ export default function Footer() {
 
   return (
     <footer className="footer">
-      <small>© {new Date().getFullYear()} Chef Site</small>
+      <small>© {new Date().getFullYear()} chefjocateringevents</small>
       {showOwnerLink && (
         <a
           href={tokenParam ? `/owner-setup?token=${encodeURIComponent(tokenParam)}` : "/owner-setup"}
