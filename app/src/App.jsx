@@ -9,6 +9,7 @@ import About from "./pages/About.jsx";
 import Admin from "./pages/Admin.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import OwnerSetup from "./pages/OwnerSetup.jsx";
+import BookEvent from "./pages/BookEvent.jsx";
 
 export default function App() {
   const ADMIN_ENABLED = import.meta.env.VITE_ADMIN_ENABLED === "true";
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/dishes" element={<Dishes />} />
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/book-event" element={<BookEvent />} />
           <Route path="/about" element={<About />} />
           <Route path="/owner-setup" element={<OwnerSetup />} />
           {ADMIN_ENABLED && <Route path="/admin" element={<Admin />} />}
