@@ -9,8 +9,7 @@ const featuredSeeds = [
     name: "Signature Pasta",
     description: "Handmade pasta in creamy sauce",
     price: 14.5,
-    image:
-      "https://images.unsplash.com/photo-1604908177078-6a15f54a1f3c?ixlib=rb-4.0.3&q=80&w=1080&auto=format&fit=crop",
+    image: "/uploads/images/signature-pasta.jpg",
   },
   {
     name: "Grilled Salmon",
@@ -93,7 +92,7 @@ export default function Home() {
           className="hero"
           style={{
             backgroundImage:
-              "linear-gradient(120deg, rgba(17,24,39,0.65), rgba(11,18,34,0.65) 60%, rgba(31,41,55,0.65)), url(/uploads/images/hero.webp), url(https://cdn.pixabay.com/photo/2017/01/18/19/39/restaurant-1999850_1280.jpg)",
+              "linear-gradient(120deg, rgba(17,24,39,0.65), rgba(11,18,34,0.65) 60%, rgba(31,41,55,0.65)), url(/uploads/images/OIP.jpg), url(/uploads/images/hero.webp), url(https://cdn.pixabay.com/photo/2017/01/18/19/39/restaurant-1999850_1280.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center",
             minHeight: "calc(100vh - var(--nav-h) - var(--footer-h))",
