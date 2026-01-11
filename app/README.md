@@ -19,6 +19,33 @@
 
 - Static hosts (Netlify/Vercel/GitHub Pages/cPanel). For SPA routing, `_redirects` is included for Netlify. For Apache, use the `.htaccess` rule in the root README.
 
+### GitHub Pages (project URL)
+- Resulting production URL: `https://shijochackotcs.github.io/chef-site/`
+- This repo includes a workflow at `.github/workflows/gh-pages.yml` that:
+   - Installs/builds from the `app` folder
+   - Sets Vite base to `/chef-site/` for correct asset paths
+   - Adds `404.html` for SPA fallback and deploys to GitHub Pages
+- Steps:
+   1. Push to `main` (the action runs automatically).
+   2. In GitHub → Settings → Pages, set Source to "GitHub Actions" (if not already).
+   3. Wait for the action to finish; your site will be at `https://shijochackotcs.github.io/chef-site/`.
+
+### Netlify
+- Connect your GitHub repo on Netlify.
+- Build settings:
+   - Base directory: `app`
+   - Build command: `npm run build`
+   - Publish directory: `app/dist`
+- SPA routing: `_redirects` is included and will be deployed from `app/public`.
+
+### Vercel
+- Import your GitHub repo on Vercel.
+- Framework preset: React (Vite)
+- Root directory: `app`
+- Build command: `npm run build`
+- Output directory: `dist` (Vercel will detect it in `app/dist` automatically)
+- SPA routing works out of the box.
+
 ## Admin Setup
 
 1. Copy `.env.example` to `.env` and set:
