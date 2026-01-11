@@ -84,11 +84,11 @@ export default function Home() {
 
       <section className="container" style={{ marginTop: "1.5rem" }}>
         <h2>Book a Catering Event</h2>
-        <div className="grid">
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
           <Link to="/book-event" className="card" aria-label="Book a Catering Event">
             <img
-              src="https://images.unsplash.com/photo-1543352633-cf9f6a3d81b0?q=80&w=1080&auto=format&fit=crop"
-              alt="Yummy catering dishes"
+              src="https://cdn.pixabay.com/photo/2016/03/05/19/02/hors-doeuvre-1236844_1280.jpg"
+              alt="Assorted hors d'oeuvres catering platter"
             />
             <div className="card-body">
               <h3>Plan Your Event</h3>
