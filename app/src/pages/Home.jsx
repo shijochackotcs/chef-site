@@ -1,5 +1,9 @@
 import DishCard from "../components/DishCard.jsx";
 import { Link } from "react-router-dom";
+import { ThemeProvider } from "@mui/material/styles";
+import { Box, Typography, Button, Paper } from "@mui/material";
+import { computeTheme, nextBoundaryMs } from "../theme.js";
+import { useEffect, useState } from "react";
 
 const featuredSeeds = [
   {
@@ -26,6 +30,19 @@ const featuredSeeds = [
 ];
 
 export default function Home() {
+  const [theme, setTheme] = useState(computeTheme());
+  useEffect(() => {
+    function schedule() {
+      const ms = nextBoundaryMs();
+      timer = setTimeout(() => {
+        setTheme(computeTheme());
+        schedule();
+      }, ms);
+    }
+    let timer = null;
+    schedule();
+    return () => timer && clearTimeout(timer);
+  }, []);
   const FEATURED_KEY = "chefsite_featured_v1";
   const DISHES_KEY = "chefsite_dishes_v1";
   let featuredIds = [];
@@ -72,23 +89,31 @@ export default function Home() {
   const display = [...distinct, ...fillers].slice(0, 3);
   return (
     <>
-      <section
-        className="hero"
-        style={{
-          backgroundImage:
-            "linear-gradient(120deg, rgba(17,24,39,0.65), rgba(11,18,34,0.65) 60%, rgba(31,41,55,0.65)), url(https://cdn.pixabay.com/photo/2016/10/26/18/57/appetizer-1776723_1280.jpg)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="hero-inner">
-          <h1>Welcome to chefjocateringevents</h1>
-          <p>Discover curated dishes and fine flavors.</p>
-          <a className="btn" href="/dishes">
-            Explore Dishes
-          </a>
-        </div>
-      </section>
+      <ThemeProvider theme={theme}>
+        <section
+          className="hero"
+          style={{
+            backgroundImage:
+              "linear-gradient(120deg, rgba(17,24,39,0.65), rgba(11,18,34,0.65) 60%, rgba(31,41,55,0.65)), url(https://cdn.pixabay.com/photo/2016/10/26/18/57/appetizer-1776723_1280.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="hero-inner">
+            <Paper elevation={4} sx={{ p: 3, borderRadius: 2, bgcolor: 'background.paper', backdropFilter: 'blur(2px)' }}>
+              <Typography variant="h3" component="h1" sx={{ mb: 1, color: 'primary.main', fontWeight: 700 }}>
+                Welcome to chefjocateringevents
+              </Typography>
+              <Typography sx={{ mb: 2, color: 'text.secondary' }}>
+                Discover curated dishes and fine flavors.
+              </Typography>
+              <Button variant="contained" color="primary" href="/dishes">
+                Explore Dishes
+              </Button>
+            </Paper>
+          </div>
+        </section>
+      </ThemeProvider>
 
       
 
@@ -104,10 +129,10 @@ export default function Home() {
       <section className="container" style={{ marginTop: "1rem", marginBottom: "1rem" }}>
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
           <Link to="/book-event" className="card" aria-label="Book a Catering Event" style={{ maxWidth: "280px" }}>
-            <div className="card-body">
+            <div className="card-body" style={{ textAlign: "center" }}>
               <h3 style={{ marginTop: 0 }}>Book a Catering Event</h3>
               <p className="muted">Request a quote for your event.</p>
-              <span className="btn-circle" style={{ display: "inline-flex", marginTop: ".5rem", width: "72px", height: "72px", fontSize: ".8rem" }}>Book Now</span>
+              <span className="btn-circle" style={{ display: "inline-flex", marginTop: ".5rem", width: "88px", height: "88px", fontSize: ".9rem" }}>Book Now</span>
             </div>
           </Link>
         </div>
