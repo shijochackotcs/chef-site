@@ -11,7 +11,7 @@ const featuredSeeds = [
     description: "Handmade pasta in creamy sauce",
     price: 14.5,
     image:
-      "https://images.unsplash.com/photo-1604908177078-6a15f54a1f3c?ixlib=rb-4.0.3&q=80&w=1080&auto=format&fit=crop",
+            minHeight: "calc(100vh - var(--nav-h) - var(--footer-h))",
   },
   {
     name: "Grilled Salmon",
@@ -71,48 +71,19 @@ export default function Home() {
     }
   }
   // Fallback: pull from all image dishes (admin + seeds), excluding placeholders
+              <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+                <Link
+                  to="/book-event"
+                  className="btn-circle"
+                  aria-label="Book a Catering Event"
+                  style={{ display: "inline-flex" }}
+                >
+                  Book Now
+                </Link>
+              </Box>
   const allImagePool = [
     ...dishes.filter((d) => d.type === "image"),
     ...featuredSeeds
-      .filter((s) => s.image && !s.image.startsWith("/"))
-      .map((s) => ({ ...s, id: `seed-${s.name}` })),
-  ];
-  const fillers = [];
-  for (const item of allImagePool) {
-    const key = item.id || item.name;
-    if (fillers.length >= 3) break;
-    if (!seen.has(key)) {
-      seen.add(key);
-      fillers.push(item);
-    }
-  }
-  const display = [...distinct, ...fillers].slice(0, 3);
-  return (
-    <>
-      <ThemeProvider theme={theme}>
-        <section
-          className="hero"
-          style={{
-            backgroundImage:
-              "linear-gradient(120deg, rgba(17,24,39,0.65), rgba(11,18,34,0.65) 60%, rgba(31,41,55,0.65)), url(/uploads/images/hero.webp), url(https://cdn.pixabay.com/photo/2017/01/18/19/39/restaurant-1999850_1280.jpg)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <div className="hero-inner">
-            <Paper
-              elevation={0}
-              sx={(theme) => ({
-                p: 3,
-                borderRadius: 2,
-                bgcolor:
-                  theme.palette.mode === "dark"
-                    ? "rgba(0,0,0,0.35)"
-                    : "rgba(255,255,255,0.55)",
-                boxShadow: "0 8px 24px rgba(0,0,0,0.25)",
-                border: "1px solid rgba(255,255,255,0.12)",
-              })}
-            >
               <Typography
                 variant="h3"
                 component="h1"
