@@ -72,7 +72,15 @@ export default function Home() {
   const display = [...distinct, ...fillers].slice(0, 3);
   return (
     <>
-      <section className="hero">
+      <section
+        className="hero"
+        style={{
+          backgroundImage:
+            "linear-gradient(120deg, rgba(17,24,39,0.65), rgba(11,18,34,0.65) 60%, rgba(31,41,55,0.65)), url(https://cdn.pixabay.com/photo/2016/10/26/18/57/appetizer-1776723_1280.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="hero-inner">
           <h1>Welcome to chefjocateringevents</h1>
           <p>Discover curated dishes and fine flavors.</p>
@@ -86,10 +94,6 @@ export default function Home() {
         <h2 style={{ textAlign: "right" }}>Book a Catering Event</h2>
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
           <Link to="/book-event" className="card" aria-label="Book a Catering Event">
-            <img
-              src="https://cdn.pixabay.com/photo/2016/03/05/19/02/hors-doeuvre-1236844_1280.jpg"
-              alt="Assorted hors d'oeuvres catering platter"
-            />
             <div className="card-body">
               <h3>Plan Your Event</h3>
               <p className="muted">Click to book catering and request a quote.</p>
