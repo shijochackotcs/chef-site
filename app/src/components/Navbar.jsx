@@ -25,6 +25,7 @@ export default function Navbar() {
             Home
           </NavLink>
           <NavLink to="/dishes">Dishes</NavLink>
+          <NavLink to="/favorites">Favorites</NavLink>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/reviews">Reviews</NavLink>
           <NavLink to="/contact">Contact</NavLink>

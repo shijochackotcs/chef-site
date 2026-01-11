@@ -14,6 +14,7 @@ import Admin from "./pages/Admin.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import OwnerSetup from "./pages/OwnerSetup.jsx";
 import BookEvent from "./pages/BookEvent.jsx";
+import Favorites from "./pages/Favorites.jsx";
 
 export default function App() {
   const ADMIN_ENABLED = import.meta.env.VITE_ADMIN_ENABLED === "true";
@@ -40,6 +41,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/dishes" element={<Dishes />} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/book-event" element={<BookEvent />} />
