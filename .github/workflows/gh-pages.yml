@@ -31,7 +31,7 @@ jobs:
         working-directory: app
         run: npm run build
         env:
-          VITE_BASE: /chef-site/
+          VITE_BASE: /
       - name: Add SPA fallback
         run: cp app/dist/index.html app/dist/404.html
       - name: Upload artifact
