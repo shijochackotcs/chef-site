@@ -101,18 +101,22 @@ export default function Home() {
         >
           <div className="hero-inner">
             <Paper
-              elevation={4}
-              sx={{
+              elevation={0}
+              sx={(theme) => ({
                 p: 3,
                 borderRadius: 2,
-                bgcolor: "background.paper",
-                backdropFilter: "blur(2px)",
-              }}
+                bgcolor:
+                  theme.palette.mode === "dark"
+                    ? "rgba(0,0,0,0.35)"
+                    : "rgba(255,255,255,0.55)",
+                boxShadow: "0 8px 24px rgba(0,0,0,0.25)",
+                border: "1px solid rgba(255,255,255,0.12)",
+              })}
             >
               <Typography
                 variant="h3"
                 component="h1"
-                sx={{ mb: 1, color: "primary.main", fontWeight: 700 }}
+                sx={{ mb: 1, color: "text.primary", fontWeight: 700 }}
               >
                 Welcome to chefjocateringevents
               </Typography>
