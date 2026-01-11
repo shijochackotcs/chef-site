@@ -90,18 +90,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container" style={{ marginTop: "1.5rem" }}>
-        <h2 style={{ textAlign: "right" }}>Book a Catering Event</h2>
-        <div style={{ display: "flex", justifyContent: "flex-end" }}>
-          <Link to="/book-event" className="card" aria-label="Book a Catering Event">
-            <div className="card-body">
-              <h3>Plan Your Event</h3>
-              <p className="muted">Click to book catering and request a quote.</p>
-              <span className="btn-circle" style={{ display: "inline-flex", marginTop: ".5rem" }}>Book Now</span>
-            </div>
-          </Link>
-        </div>
-      </section>
+      
 
       <section>
         <h2>Featured Dishes</h2>
@@ -109,6 +98,18 @@ export default function Home() {
           {display.map((d, i) => (
             <DishCard key={d.id ? d.id : i} dish={d} />
           ))}
+        </div>
+      </section>
+
+      <section className="container" style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <Link to="/book-event" className="card" aria-label="Book a Catering Event" style={{ maxWidth: "280px" }}>
+            <div className="card-body">
+              <h3 style={{ marginTop: 0 }}>Book a Catering Event</h3>
+              <p className="muted">Request a quote for your event.</p>
+              <span className="btn-circle" style={{ display: "inline-flex", marginTop: ".5rem", width: "72px", height: "72px", fontSize: ".8rem" }}>Book Now</span>
+            </div>
+          </Link>
         </div>
       </section>
     </>
