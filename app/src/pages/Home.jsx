@@ -86,6 +86,10 @@ export default function Home() {
     }
   }
   const display = [...distinct, ...fillers].slice(0, 3);
+  // Popular chip logic: prefer a random featured image; otherwise pick a random image from pool
+  const featuredImages = dishes.filter((d) => d.type === "image" && d.featured);
+  const rand = (arr) => (arr.length ? arr[Math.floor(Math.random() * arr.length)] : null);
+  const popular = rand(featuredImages) || rand(allImagePool);
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -136,7 +140,7 @@ export default function Home() {
               >
                 Fresh food made with love for every occasion.
               </Typography>
-              {display && display.length > 0 && (
+              {popular && (
                 <Box
                   sx={{
                     display: "flex",
@@ -147,8 +151,8 @@ export default function Home() {
                   }}
                 >
                   <img
-                    src={display[0].image}
-                    alt={display[0].name}
+                    src={popular.image}
+                    alt={popular.name || "Popular Dish"}
                     style={{
                       width: 56,
                       height: 56,
@@ -162,7 +166,7 @@ export default function Home() {
                     }}
                   />
                   <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                    Popular: {display[0].name}
+                    Popular: {popular.name || "Chef's Pick"}
                   </Typography>
                 </Box>
               )}
