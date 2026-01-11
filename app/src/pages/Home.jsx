@@ -1,7 +1,7 @@
 import DishCard from "../components/DishCard.jsx";
 import { Link } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
-import { Box, Typography, Button, Paper } from "@mui/material";
+import { Box, Typography, Button, Paper, Stack } from "@mui/material";
 import { computeTheme, nextBoundaryMs } from "../theme.js";
 import { useEffect, useState } from "react";
 
@@ -94,7 +94,7 @@ export default function Home() {
           className="hero"
           style={{
             backgroundImage:
-              "linear-gradient(120deg, rgba(17,24,39,0.65), rgba(11,18,34,0.65) 60%, rgba(31,41,55,0.65)), url(https://cdn.pixabay.com/photo/2017/01/18/19/39/restaurant-1999850_1280.jpg)",
+              "linear-gradient(120deg, rgba(17,24,39,0.65), rgba(11,18,34,0.65) 60%, rgba(31,41,55,0.65)), url(/uploads/images/hero.webp), url(https://cdn.pixabay.com/photo/2017/01/18/19/39/restaurant-1999850_1280.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -116,16 +116,46 @@ export default function Home() {
               <Typography
                 variant="h3"
                 component="h1"
-                sx={{ mb: 1, color: "text.primary", fontWeight: 700 }}
+                sx={{
+                  mb: 1.5,
+                  color: "text.primary",
+                  fontWeight: 700,
+                  fontFamily: 'Caveat, cursive',
+                  letterSpacing: ".5px",
+                  fontSize: { xs: "2rem", sm: "2.6rem", md: "3rem" },
+                }}
               >
                 Welcome to chefjocateringevents
               </Typography>
-              <Typography sx={{ mb: 2, color: "text.secondary" }}>
-                Discover curated dishes and fine flavors.
+              <Typography
+                sx={{
+                  mb: 2.5,
+                  color: "text.secondary",
+                  fontFamily: 'Quicksand, system-ui, sans-serif',
+                }}
+              >
+                Fresh food made with love for every occasion.
               </Typography>
-              <Button variant="contained" color="primary" href="/dishes">
-                Explore Dishes
-              </Button>
+              <Stack direction="row" spacing={2} justifyContent="center">
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  component={Link}
+                  to="/contact"
+                  sx={{ borderRadius: 9999, px: 2.5, py: 0.75 }}
+                >
+                  Contact us
+                </Button>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  component={Link}
+                  to="/dishes"
+                  sx={{ borderRadius: 9999, px: 2.5, py: 0.75 }}
+                >
+                  Explore Menu
+                </Button>
+              </Stack>
             </Paper>
           </div>
         </section>
