@@ -83,7 +83,7 @@ export default function Home() {
       </section>
 
       <section className="container" style={{ marginTop: "1.5rem" }}>
-        <h2>Book a Catering Event</h2>
+        <h2 style={{ textAlign: "right" }}>Book a Catering Event</h2>
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
           <Link to="/book-event" className="card" aria-label="Book a Catering Event">
             <img
@@ -93,7 +93,7 @@ export default function Home() {
             <div className="card-body">
               <h3>Plan Your Event</h3>
               <p className="muted">Click to book catering and request a quote.</p>
-              <span className="btn" style={{ display: "inline-block", marginTop: ".5rem" }}>Book Now</span>
+              <span className="btn-circle" style={{ display: "inline-flex", marginTop: ".5rem" }}>Book Now</span>
             </div>
           </Link>
         </div>
