@@ -453,6 +453,7 @@ export default function Admin() {
         <ImageDishForm />
         <YoutubeDishForm />
       </div>
+      <EventRequestsPanel />
       <AboutInfoForm />
       <ContactInfoForm />
       <FeaturedImageForm />
@@ -600,6 +601,47 @@ function AdminSettings() {
       </form>
       <button className="btn" type="button" onClick={clearOverride} style={{ marginTop: ".5rem" }}>Clear Local Override</button>
       <p className="muted">Client-side passwords are not secure; prefer real auth for production.</p>
+    </section>
+  );
+}
+
+function EventRequestsPanel() {
+  const KEY = "chefsite_event_requests_v1";
+  const [requests, setRequests] = useState([]);
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw) setRequests(JSON.parse(raw));
+    } catch {}
+  }, []);
+
+  return (
+    <section style={{ marginTop: "1.5rem" }}>
+      <h2>Catering Event Requests</h2>
+      {requests.length === 0 ? (
+        <p className="muted">No requests yet.</p>
+      ) : (
+        <div className="reviews">
+          {requests.map((r) => (
+            <article key={r.id} className="review">
+              <div className="review-header">
+                <strong>{new Date(r.submittedAt).toLocaleString()}</strong>
+                <span className="muted">{r.persons} persons • {r.eventDate}</span>
+              </div>
+              <p><strong>Details:</strong> {r.eventDetails}</p>
+              {r.menuPreferences && <p><strong>Menu:</strong> {r.menuPreferences}</p>}
+              {r.additionalInfo && <p><strong>Info:</strong> {r.additionalInfo}</p>}
+              <div className="review-meta">
+                <span>
+                  <strong>Contact:</strong> {r.contactPhone}{r.contactEmail ? ` • ${r.contactEmail}` : ""}
+                </span>
+                <span className="muted">Source: {r.source}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
