@@ -1,4 +1,8 @@
 import { Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { useEffect, useState } from "react";
+import { computeTheme, nextBoundaryMs } from "./theme.js";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import Home from "./pages/Home.jsx";
@@ -13,23 +17,40 @@ import BookEvent from "./pages/BookEvent.jsx";
 
 export default function App() {
   const ADMIN_ENABLED = import.meta.env.VITE_ADMIN_ENABLED === "true";
+  const [theme, setTheme] = useState(computeTheme());
+  useEffect(() => {
+    let timer = null;
+    function schedule() {
+      const ms = nextBoundaryMs();
+      timer = setTimeout(() => {
+        setTheme(computeTheme());
+        schedule();
+      }, ms);
+    }
+    schedule();
+    return () => timer && clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="app">
-      <Navbar />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/dishes" element={<Dishes />} />
-          <Route path="/reviews" element={<Reviews />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/book-event" element={<BookEvent />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/owner-setup" element={<OwnerSetup />} />
-          {ADMIN_ENABLED && <Route path="/admin" element={<Admin />} />}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <div className="app">
+        <Navbar />
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/dishes" element={<Dishes />} />
+            <Route path="/reviews" element={<Reviews />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/book-event" element={<BookEvent />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/owner-setup" element={<OwnerSetup />} />
+            {ADMIN_ENABLED && <Route path="/admin" element={<Admin />} />}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </ThemeProvider>
   );
 }
