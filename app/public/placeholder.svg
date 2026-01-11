@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1f2937"/>
+      <stop offset="1" stop-color="#0b1222"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <g fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
+    <text x="600" y="380" font-size="64" font-weight="700">Image Unavailable</text>
+    <text x="600" y="440" font-size="28">Placeholder</text>
+  </g>
+  <g fill="none" stroke="#334155" stroke-width="10">
+    <rect x="300" y="200" width="600" height="400" rx="24"/>
+    <circle cx="420" cy="340" r="60" fill="#334155"/>
+    <path d="M350 520 L520 370 L600 440 L680 380 L850 520 Z" fill="#334155"/>
+  </g>
+</svg>

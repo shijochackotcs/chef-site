@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chef Site</title>
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- React & ReactDOM (development UMD builds). Use production builds when deploying. -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- Babel Standalone to transform JSX in the browser (development only). -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- Your app code (JSX). In production, compile to plain JS and include that instead. -->
+    <script type="text/babel" data-presets="env,react" src="../src/app.jsx"></script>
+  </body>
+  <!--
+    Production note:
+    - Replace the React scripts above with production builds:
+      https://unpkg.com/react@18/umd/react.production.min.js
+      https://unpkg.com/react-dom@18/umd/react-dom.production.min.js
+    - Remove Babel Standalone and include compiled JS (e.g., ./app.js) built with Babel CLI.
+  -->
+</html>

@@ -1,0 +1,36 @@
+# Node/Vite
+node_modules/
+dist/
+build/
+.cache/
+.vite/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files (do not commit secrets)
+.env
+.env.*
+app/.env
+app/.env.*
+
+# Editor & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Test & coverage
+coverage/
+*.lcov
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Local uploads or generated assets
+app/uploads/
+app/uploads/**
