@@ -92,7 +92,7 @@ export default function Home() {
           className="hero"
           style={{
             backgroundImage:
-              "linear-gradient(120deg, rgba(17,24,39,0.65), rgba(11,18,34,0.65) 60%, rgba(31,41,55,0.65)), url(/uploads/images/OIP.jpg), url(/uploads/images/hero.webp), url(https://cdn.pixabay.com/photo/2017/01/18/19/39/restaurant-1999850_1280.jpg)",
+              "linear-gradient(120deg, rgba(17,24,39,0.65), rgba(11,18,34,0.65) 60%, rgba(31,41,55,0.65)), url(/uploads/images/yummy.webp), url(/uploads/images/OIP.jpg), url(/uploads/images/hero.webp), url(https://cdn.pixabay.com/photo/2017/01/18/19/39/restaurant-1999850_1280.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center",
             minHeight: "calc(100vh - var(--nav-h) - var(--footer-h))",
@@ -102,13 +102,13 @@ export default function Home() {
             <Paper
               elevation={0}
               sx={(theme) => ({
-                p: 3,
+                p: { xs: 2, sm: 3 },
                 borderRadius: 2,
                 bgcolor:
                   theme.palette.mode === "dark"
                     ? "rgba(0,0,0,0.35)"
                     : "rgba(255,255,255,0.55)",
-                boxShadow: "0 8px 24px rgba(0,0,0,0.25)",
+                boxShadow: { xs: "0 4px 16px rgba(0,0,0,0.2)", sm: "0 8px 24px rgba(0,0,0,0.25)" },
                 border: "1px solid rgba(255,255,255,0.12)",
               })}
             >
