@@ -26,6 +26,15 @@ jobs:
           node-version: '20'
           cache: npm
           cache-dependency-path: app/package-lock.json
+      - name: Set build base and domain
+        run: |
+          if [ -n "${{ vars.CUSTOM_DOMAIN }}" ]; then
+            echo "VITE_BASE=/" >> $GITHUB_ENV
+            echo "USE_CNAME=true" >> $GITHUB_ENV
+          else
+            echo "VITE_BASE=/chef-site/" >> $GITHUB_ENV
+            echo "USE_CNAME=false" >> $GITHUB_ENV
+          fi
       - name: Install deps
         working-directory: app
         run: npm ci
@@ -33,10 +42,12 @@ jobs:
         working-directory: app
         run: npm run build
         env:
-          VITE_BASE: /
+          VITE_BASE: ${{ env.VITE_BASE }}
       - name: Ensure CNAME and SPA fallback
         run: |
-          echo chefjocateringevents.au > app/dist/CNAME
+          if [ "$USE_CNAME" = "true" ]; then
+            echo "${{ vars.CUSTOM_DOMAIN }}" > app/dist/CNAME
+          fi
           cp app/dist/index.html app/dist/404.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
