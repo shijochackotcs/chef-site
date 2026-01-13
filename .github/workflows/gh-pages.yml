@@ -24,6 +24,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: npm
+          cache-dependency-path: app/package-lock.json
       - name: Install deps
         working-directory: app
         run: npm ci
@@ -32,8 +34,10 @@ jobs:
         run: npm run build
         env:
           VITE_BASE: /
-      - name: Add SPA fallback
-        run: cp app/dist/index.html app/dist/404.html
+      - name: Ensure CNAME and SPA fallback
+        run: |
+          echo chefjocateringevents.au > app/dist/CNAME
+          cp app/dist/index.html app/dist/404.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
